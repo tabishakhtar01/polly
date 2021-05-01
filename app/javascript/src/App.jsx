@@ -1,12 +1,14 @@
 import React from "react";
+import Dashboard from "components/Dashboard";
 
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 const App = () => {
   return (
-    <>
-      <div className="bg-blue-900">
-        <h1 className="text-center">This is the default Home Page</h1>;
-      </div>
-    </>
+    <Router>
+      <Switch>
+        <Route exact path="/dashboard" component={Dashboard} />
+      </Switch>
+    </Router>
   );
 };
 

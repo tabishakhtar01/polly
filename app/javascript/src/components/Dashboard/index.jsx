@@ -17,7 +17,7 @@ const Dashboard = () => {
       setPolls(response.data.polls);
       setLoading(false);
     } catch (error) {
-      logger.error(error);
+      //   logger.errorS(error);
       setLoading(false);
     }
   };

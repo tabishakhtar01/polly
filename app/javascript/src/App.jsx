@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { registerIntercepts, setAuthHeaders } from "apis/axios";
+import EditPoll from "components/Polls/EditPoll";
 
 import Dashboard from "components/Dashboard";
 import CreatePoll from "components/Polls/CreatePoll";
@@ -18,6 +19,7 @@ const App = () => {
     <Router>
       <ToastContainer />
       <Switch>
+        <Route exact path="/polls/:id/edit" component={EditPoll} />
         <Route exact path="/polls/:id/show" component={ShowPoll} />
         <Route exact path="/polls/create" component={CreatePoll} />
         <Route exact path="/dashboard" component={Dashboard} />

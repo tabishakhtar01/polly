@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListPolls = ({ data, showPoll }) => {
+const ListPolls = ({ data, showPoll, updatePoll }) => {
   return (
     <>
       <h1>List of Polls Available</h1>
@@ -9,7 +9,12 @@ const ListPolls = ({ data, showPoll }) => {
           <span className="cursor-pointer" onClick={() => showPoll(poll.id)}>
             {poll.title}
           </span>
-          {/* <span className="px-6" onClick={() => updatePoll(poll.id)}>Edit</span> */}
+          <span
+            className="px-6 cursor-pointer"
+            onClick={() => updatePoll(poll.id)}
+          >
+            Edit
+          </span>
         </li>
       ))}
     </>

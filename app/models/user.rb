@@ -2,7 +2,7 @@ class User < ApplicationRecord
     VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
 
     validates :name, presence: true, length: { maximum: 35 }
-    has_many :polls, dependent: :destroy
+    # has_many :polls, dependent: :destroy
     has_secure_password
 
     validates :email, presence: true,
@@ -18,5 +18,5 @@ class User < ApplicationRecord
     def to_lowercase
       email.downcase!
     end
-    
+
 end

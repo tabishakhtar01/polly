@@ -1,4 +1,6 @@
 class PollsController < ApplicationController
+  protect_from_forgery with: :null_session
+
   before_action :load_poll, only: %i[show update destroy]
     def index
         polls = Poll.all
@@ -8,7 +10,9 @@ class PollsController < ApplicationController
     def create
         @poll = Poll.new(poll_params)
         if @poll.save
-          render status: :ok, json: { notice:  t('successfully_created') }
+          render status: :ok, json: { notice: t('successfully_created', entity: 'Poll') }
+          # render status: :ok, json: { notice: 'successfully_created' }
+
         else
           errors = @poll.errors.full_messages
           render status: :unprocessable_entity, json: { errors: errors  }

@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :load_poll, only: %i[show update]
+  before_action :load_poll, only: %i[show update destroy]
     def index
         polls = Poll.all
         render status: :ok, json: {polls: polls}
@@ -26,6 +26,15 @@ class PollsController < ApplicationController
         render status: :ok, json: {  }
       else
         render status: :unprocessable_entity, json: { errors: @task.errors.full_messages }
+      end
+    end
+
+    def destroy
+      if @poll.destroy
+        render status: :ok, json: { notice: 'Successfully deleted task.' }
+      else
+        render status: :unprocessable_entity, json: { errors:
+        @task.errors.full_messages }
       end
     end
 

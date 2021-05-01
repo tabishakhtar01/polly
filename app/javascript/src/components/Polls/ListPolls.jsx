@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListPolls = ({ data, showPoll, updatePoll }) => {
+const ListPolls = ({ data, showPoll, updatePoll, destroyPoll }) => {
   return (
     <>
       <h1>List of Polls Available</h1>
@@ -14,6 +14,12 @@ const ListPolls = ({ data, showPoll, updatePoll }) => {
             onClick={() => updatePoll(poll.id)}
           >
             Edit
+          </span>
+          <span
+            className="text-red-500 cursor-pointer hover:text-red-700"
+            onClick={() => destroyPoll(poll.id)}
+          >
+            Delete
           </span>
         </li>
       ))}

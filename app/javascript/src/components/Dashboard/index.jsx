@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { isNil, isEmpty, either } from "ramda";
-
+import { useHistory } from "react-router-dom";
 import Container from "components/Container";
 import ListPolls from "components/Polls/ListPolls";
 import PageLoader from "components/PageLoader";
@@ -8,6 +8,8 @@ import pollsApi from "apis/polls";
 import { logger } from "common/logger";
 
 const Dashboard = () => {
+  const history = useHistory();
+
   const [polls, setPolls] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -20,6 +22,10 @@ const Dashboard = () => {
       //   logger.errorS(error);
       setLoading(false);
     }
+  };
+
+  const showPoll = id => {
+    history.push(`/polls/${id}/show`);
   };
 
   useEffect(() => {
@@ -37,7 +43,7 @@ const Dashboard = () => {
   if (!either(isNil, isEmpty)(polls)) {
     return (
       <Container>
-        <ListPolls data={polls} />
+        <ListPolls data={polls} showPoll={showPoll} />
       </Container>
     );
   }

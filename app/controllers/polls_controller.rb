@@ -15,21 +15,21 @@ class PollsController < ApplicationController
         end
       rescue ActiveRecord::RecordNotUnique => e
         render status: :unprocessable_entity, json: { errors: e.message }
-      end
+    end
 
-      def show
-        render status: :ok, json: { poll: @poll }
-      end
+    def show
+      render status: :ok, json: { poll: @poll }
+    end
 
-      def load_poll
-        @poll = Poll.find(params[:id])
-        rescue ActiveRecord::RecordNotFound => errors
-          render json: {errors: errors }
-        end 
-    
       private
-    
-      def poll_params
-        params.require(:poll).permit(:title)
-      end
+
+    def poll_params
+      params.require(:poll).permit(:title)
+    end
+      
+    def load_poll
+      @poll = Poll.find(params[:id])
+      rescue ActiveRecord::RecordNotFound => errors
+        render json: {errors: errors }
+    end 
 end

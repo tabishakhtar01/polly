@@ -1,6 +1,5 @@
 class PollsController < ApplicationController
-  protect_from_forgery with: :null_session
-
+  before_action :authenticate_user_using_x_auth_token, except: [:new, :edit, :index]
   before_action :load_poll, only: %i[show update destroy]
     def index
         polls = Poll.all
@@ -8,7 +7,9 @@ class PollsController < ApplicationController
     end
 
     def create
-        @poll = Poll.new(poll_params)
+        # @poll = Poll.new(poll_params)
+        @poll = Poll.new(poll_params.merge(user_id: @current_user.id))
+        # authorize @poll
         if @poll.save
           render status: :ok, json: { notice: t('successfully_created', entity: 'Poll') }
           # render status: :ok, json: { notice: 'successfully_created' }

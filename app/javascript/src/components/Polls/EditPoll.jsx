@@ -21,7 +21,7 @@ const EditPoll = ({ history }) => {
       await pollsApi.update({ id, payload: { poll: { title } } });
       setLoading(false);
       Toastr.success("Successfully updated poll.");
-      history.push("/dashboard");
+      history.push("/");
     } catch (error) {
       setLoading(false);
       logger.error(error);

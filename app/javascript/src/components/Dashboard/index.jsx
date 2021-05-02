@@ -37,7 +37,7 @@ const Dashboard = () => {
       await pollsApi.destroy(id);
       await fetchPolls();
     } catch (error) {
-      logger.error(error);
+      // logger.error(error);
     }
   };
 

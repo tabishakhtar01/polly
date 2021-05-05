@@ -20,13 +20,18 @@ const PollForm = ({
 }) => {
   return (
     <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+      <h1 className="pb-6 pt-6 mt-10 mb-4 text-3xl text-bold leading-5 text-bb-gray">
+        Your Poll Question Here
+      </h1>
       <Input
-        label="Poll"
+        label=""
         placeholder="Enter Your Question"
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
-
+      <h1 className="pt-6 mt-10 mb-4 text-xl text-bold leading-5 text-bb-gray">
+        Your Options Here{" "}
+      </h1>
       <Input
         label=""
         placeholder="Option 1"

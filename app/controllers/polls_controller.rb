@@ -10,7 +10,7 @@ class PollsController < ApplicationController
     def create
         # @poll = Poll.new(poll_params)
         @poll = Poll.new(poll_params.merge(user_id: @current_user.id))
-        # authorize @poll
+  
         if @poll.save
           render status: :ok, json: { notice: t('successfully_created', entity: 'Poll') }
           # render status: :ok, json: { notice: 'successfully_created' }
@@ -31,7 +31,7 @@ class PollsController < ApplicationController
       if @poll.update(poll_params)
         render status: :ok, json: {  }
       else
-        render status: :unprocessable_entity, json: { errors: @task.errors.full_messages }
+        render status: :unprocessable_entity, json: { errors: @poll.errors.full_messages }
       end
     end
 
@@ -40,15 +40,16 @@ class PollsController < ApplicationController
         render status: :ok, json: { notice: 'Successfully deleted task.' }
       else
         render status: :unprocessable_entity, json: { errors:
-        @task.errors.full_messages }
+        @poll.errors.full_messages }
       end
     end
 
       private
 
     def poll_params
-      params.require(:poll).permit(:title)
+      params.require(:poll).permit(:title, responses_attributes: [:option])
     end
+
       
     def load_poll
       @poll = Poll.find(params[:id])

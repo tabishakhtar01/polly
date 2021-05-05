@@ -7,6 +7,14 @@ const PollForm = ({
   type = "create",
   title,
   setTitle,
+  option1,
+  option2,
+  option3,
+  option4,
+  setOption1,
+  setOption2,
+  setOption3,
+  setOption4,
   loading,
   handleSubmit,
 }) => {
@@ -14,10 +22,39 @@ const PollForm = ({
     <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
       <Input
         label="Poll"
-        placeholder="Docs Revamp"
+        placeholder="Enter Your Question"
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
+
+      <Input
+        label=""
+        placeholder="Option 1"
+        value={option1}
+        onChange={e => setOption1(e.target.value)}
+      />
+
+      <Input
+        label=""
+        placeholder="Option 2"
+        value={option2}
+        onChange={e => setOption2(e.target.value)}
+      />
+
+      <Input
+        label=""
+        placeholder="Option 3"
+        value={option3}
+        onChange={e => setOption3(e.target.value)}
+      />
+
+      <Input
+        label=""
+        placeholder="Option 4"
+        value={option4}
+        onChange={e => setOption4(e.target.value)}
+      />
+
       <Button
         type="submit"
         buttonText={type === "create" ? "Create Poll" : "Update Poll"}

@@ -46,7 +46,7 @@ const NavBar = () => {
               text-opacity-50 transition duration-150 ease-in-out border-b-2 border-transparent focus:outline-none
               focus:text-bb-gray-700"
             >
-              {userName}
+              Hii There! {userName}
             </span>
           </div>
           <div className="flex items-center justify-end">

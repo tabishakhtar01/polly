@@ -59,7 +59,7 @@ const Dashboard = () => {
         <ListPolls
           data={polls}
           showPoll={showPoll}
-          updatePoll={updatePoll}
+          // updatePoll={updatePoll}
           destroyPoll={destroyPoll}
         />
       </Container>

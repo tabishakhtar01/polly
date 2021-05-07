@@ -1,7 +1,9 @@
 class PollsController < ApplicationController
   # before_action :authenticate_user_using_x_auth_token
-  before_action :authenticate_user_using_x_auth_token, except: [:new, :edit, :index]
+  before_action :authenticate_user_using_x_auth_token, except: [:index]
   before_action :load_poll, only: %i[show update destroy]
+  before_action :load_responses, :load_votes, only: %i[show]
+
     def index
         polls = Poll.all
         render status: :ok, json: {polls: polls}
@@ -24,7 +26,7 @@ class PollsController < ApplicationController
     end
 
     def show
-      render status: :ok, json: { poll: @poll }
+      render status: :ok, json: {  poll: @poll, responses: @responses, votes: @votes }
     end
 
     def update
@@ -56,4 +58,17 @@ class PollsController < ApplicationController
       rescue ActiveRecord::RecordNotFound => errors
         render json: {errors: errors }
     end 
+
+    def load_responses
+      @responses = Response.where(poll_id: params[:id]).limit(4)
+
+    rescue ActiveRecord::RecordNotFound => errors
+      render json: {errors: errors }
+    end
+  
+    def load_votes
+      @votes = Vote.where(poll_id: params[:id])
+      rescue ActiveRecord::RecordNotFound => errors
+        render json: {errors: errors}
+    end
 end

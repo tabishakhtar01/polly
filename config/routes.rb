@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :votes
   resources :responses
   # resources :polls, only: :index
   # resources :polls, only: [:index, :create]

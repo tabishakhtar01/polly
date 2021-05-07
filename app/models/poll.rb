@@ -1,6 +1,7 @@
 class Poll < ApplicationRecord
-    belongs_to :user
     has_many :responses, dependent: :destroy
-    accepts_nested_attributes_for :responses
+    has_many :votes, dependent: :destroy
+    belongs_to :user
     validates :title, presence: true, length: { maximum: 50 }
+    accepts_nested_attributes_for :responses
 end

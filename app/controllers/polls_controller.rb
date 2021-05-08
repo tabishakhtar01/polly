@@ -49,7 +49,7 @@ class PollsController < ApplicationController
       private
 
     def poll_params
-      params.require(:poll).permit(:title, responses_attributes: [:option])
+      params.require(:poll).permit(:title, responses_attributes: [:id, :option])
     end
 
       

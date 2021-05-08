@@ -14,10 +14,11 @@ class ApplicationController < ActionController::Base
         else
             render status: :unauthorized, json: { errors: [t('session.could_not_auth')] }
         end
-      end
+    end
     
-      private
-        def current_user
-          @current_user
-        end
+    private
+    
+    def current_user
+        @current_user 
+    end
 end

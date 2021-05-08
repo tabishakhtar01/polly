@@ -6,9 +6,6 @@ import { logger } from "common/logger";
 import { resetAuthTokens } from "../../apis/axios";
 const NavBar = () => {
   const userName = getFromLocalStorage("authUserName");
-  // const userId = getFromLocalStorage("authUserId");
-  // const hii = window.localStorage
-  // console.log(hii)
   const handleLogout = async () => {
     try {
       const yo = window.localStorage;
@@ -22,7 +19,7 @@ const NavBar = () => {
       resetAuthTokens();
       window.location.href = "/";
     } catch (error) {
-      // logger.error(error);
+      logger.error(error);
     }
   };
 

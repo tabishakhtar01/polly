@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
 
     def destroy
         @current_user = nil
-        # @current_user = destroy
     end
     
       private

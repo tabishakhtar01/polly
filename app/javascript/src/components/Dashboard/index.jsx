@@ -9,17 +9,15 @@ import { logger } from "common/logger";
 
 const Dashboard = () => {
   const history = useHistory();
-
   const [polls, setPolls] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const fetchPolls = async () => {
     try {
       const response = await pollsApi.list();
       setPolls(response.data.polls);
       setLoading(false);
     } catch (error) {
-      //   logger.errorS(error);
+      logger.error(error);
       setLoading(false);
     }
   };
@@ -37,7 +35,7 @@ const Dashboard = () => {
       await pollsApi.destroy(id);
       await fetchPolls();
     } catch (error) {
-      // logger.error(error);
+      logger.error(error);
     }
   };
 

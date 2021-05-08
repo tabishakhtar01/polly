@@ -1,5 +1,4 @@
 class PollsController < ApplicationController
-  # before_action :authenticate_user_using_x_auth_token
   before_action :authenticate_user_using_x_auth_token, except: [:index]
   before_action :load_poll, only: %i[show update destroy]
   before_action :load_responses, :load_votes, only: %i[show]
@@ -10,19 +9,14 @@ class PollsController < ApplicationController
     end
 
     def create
-        # @poll = Poll.new(poll_params)
         @poll = Poll.new(poll_params.merge(user_id: @current_user.id))
   
         if @poll.save
           render status: :ok, json: { notice: t('successfully_created', entity: 'Poll') }
-          # render status: :ok, json: { notice: 'successfully_created' }
-
         else
           errors = @poll.errors.full_messages
           render status: :unprocessable_entity, json: { errors: errors  }
         end
-      rescue ActiveRecord::RecordNotUnique => e
-        render status: :unprocessable_entity, json: { errors: e.message }
     end
 
     def show
@@ -46,7 +40,7 @@ class PollsController < ApplicationController
       end
     end
 
-      private
+    private
 
     def poll_params
       params.require(:poll).permit(:title, responses_attributes: [:id, :option])

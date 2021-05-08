@@ -40,7 +40,6 @@ const App = () => {
         <Route exact path="/polls/:id/edit" component={EditPoll} />
         <Route exact path="/polls/:id/show" component={ShowPoll} />
         <Route exact path="/polls/create" component={CreatePoll} />
-        {/* <Route exact path="/dashboard" component={Dashboard} /> */}
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute

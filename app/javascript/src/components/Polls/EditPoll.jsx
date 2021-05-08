@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import Container from "components/Container";
 import PollsForm from "./Form/PollsForm";
 import pollsApi from "apis/polls";
@@ -10,7 +9,6 @@ import { logger } from "common/logger";
 
 const EditPoll = ({ history }) => {
   const [title, setTitle] = useState("");
-  //   const [userId, setUserId] = useState("");
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
   const { id } = useParams();
@@ -32,7 +30,6 @@ const EditPoll = ({ history }) => {
     try {
       const response = await pollsApi.show(id);
       setTitle(response.data.poll.title);
-      //   setUserId(response.data.task.user_id);
     } catch (error) {
       logger.error(error);
     } finally {

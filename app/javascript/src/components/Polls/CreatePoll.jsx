@@ -10,7 +10,6 @@ const CreatePoll = ({ history }) => {
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
   const [option4, setOption4] = useState("");
-
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async event => {
@@ -30,7 +29,7 @@ const CreatePoll = ({ history }) => {
       setLoading(false);
       history.push("/dashboard");
     } catch (error) {
-      //   logger.error(error);
+      logger.error(error);
       setLoading(false);
     }
   };

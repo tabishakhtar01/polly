@@ -67,7 +67,7 @@ const Dashboard = () => {
   return (
     <Container>
       <h1 className="text-xl leading-5 text-center">
-        You have no polls assigned 😔
+        We have no polls here 😔
       </h1>
     </Container>
   );

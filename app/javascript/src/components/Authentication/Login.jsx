@@ -15,7 +15,6 @@ const Login = () => {
     event.preventDefault();
     try {
       const response = await authApi.login({ login: { email, password } });
-      //   console.log(response.data)
       setToLocalStorage({
         authToken: response.data.auth_token,
         email,
@@ -26,10 +25,8 @@ const Login = () => {
       setLoading(false);
       setPageLoading(true);
       setTimeout(() => {
-        // setPageLoading(true);
         window.location.href = "/";
-      }, 3000);
-      // window.location.href = "/";
+      }, 2000);
     } catch (error) {
       logger.error(error);
       setLoading(false);

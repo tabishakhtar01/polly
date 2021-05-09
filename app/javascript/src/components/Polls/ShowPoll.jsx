@@ -7,7 +7,7 @@ import pollsApi from "apis/polls";
 import votesApi from "apis/votes";
 import { logger } from "common/logger";
 import { getFromLocalStorage } from "helpers/storage";
-// import ProgressBar from 'react-bootstrap/ProgressBar'
+
 const ShowPoll = () => {
   const { id } = useParams();
   const userId = getFromLocalStorage("authUserId");
@@ -82,7 +82,7 @@ const ShowPoll = () => {
                   ? "bg-blue-800 text-white shadow-md animate-bounce"
                   : ""
               } 
-${isVoted ? "pointer-events-none" : ""}`}
+                ${isVoted ? "pointer-events-none" : ""}`}
               onClick={() => setVotedOption(optionDetails[0]?.id)}
             >
               {" "}
@@ -113,12 +113,11 @@ ${isVoted ? "pointer-events-none" : ""}`}
         <div className="cursor-pointer pb-3 pl-3 mt-3 mb-3 text-lg leading-5 text-bb-gray border-b border-bb-gray">
           <h1>
             <span
-              className={`p-2 w-3/4 rounded inline-block cursor-pointer
-hover:bg-bb-purple hover:text-white ${
-    optionDetails[1]?.id === votedOption
-      ? "bg-blue-800 text-white shadow-md animate-bounce"
-      : ""
-    } ${isVoted ? "pointer-events-none" : ""}`}
+              className={`p-2 w-3/4 rounded inline-block cursor-pointer hover:bg-bb-purple hover:text-white ${
+                optionDetails[1]?.id === votedOption
+                  ? "bg-blue-800 text-white shadow-md animate-bounce"
+                  : ""
+              } ${isVoted ? "pointer-events-none" : ""}`}
               onClick={() => setVotedOption(optionDetails[1]?.id)}
             >
               {" "}
@@ -149,12 +148,11 @@ hover:bg-bb-purple hover:text-white ${
         <div className="cursor-pointer pb-3 pl-3 mt-3 mb-3 text-lg leading-5 text-bb-gray border-b border-bb-gray">
           <h1>
             <span
-              className={`p-2 w-3/4 inline-block cursor-pointer
-hover:bg-bb-purple rounded hover:text-white ${
-    optionDetails[2]?.id === votedOption
-      ? "bg-blue-800 text-white shadow-md animate-bounce"
-      : ""
-    } ${isVoted ? "pointer-events-none" : ""}`}
+              className={`p-2 w-3/4 inline-block cursor-pointer hover:bg-bb-purple rounded hover:text-white ${
+                optionDetails[2]?.id === votedOption
+                  ? "bg-blue-800 text-white shadow-md animate-bounce"
+                  : ""
+              } ${isVoted ? "pointer-events-none" : ""}`}
               onClick={() => setVotedOption(optionDetails[2]?.id)}
             >
               {" "}
@@ -185,12 +183,11 @@ hover:bg-bb-purple rounded hover:text-white ${
         <div className="cursor-pointer pb-3 pl-3 mt-3 mb-3 text-lg leading-5 text-bb-gray border-b border-bb-gray">
           <h1>
             <span
-              className={`p-2 w-3/4 rounded inline-block cursor-pointer
-hover:bg-bb-purple hover:text-white ${
-    optionDetails[3]?.id === votedOption
-      ? "bg-blue-800 text-white shadow-md animate-bounce"
-      : ""
-    } ${isVoted ? "pointer-events-none" : ""}`}
+              className={`p-2 w-3/4 rounded inline-block cursor-pointer hover:bg-bb-purple hover:text-white ${
+                optionDetails[3]?.id === votedOption
+                  ? "bg-blue-800 text-white shadow-md animate-bounce"
+                  : ""
+              } ${isVoted ? "pointer-events-none" : ""}`}
               onClick={() => setVotedOption(optionDetails[3]?.id)}
             >
               {" "}

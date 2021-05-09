@@ -1,24 +1,8 @@
-# README
+[![tabishakhtar01](https://circleci.com/gh/tabishakhtar01/polly.svg?style=shield)](https://circleci.com/gh/tabishakhtar01/polly)
+<br/>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# [POLLY](https://polly-bb.herokuapp.com/)
 
-Things you may want to cover:
+Create and Vote Poll
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Check the deployment here: https://polly-bb.herokuapp.com/

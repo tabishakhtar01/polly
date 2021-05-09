@@ -3,12 +3,14 @@ import React from "react";
 const ListPolls = ({ data, showPoll, updatePoll, destroyPoll }) => {
   return (
     <>
-      <h1 className="text-center mb-10 text-5xl">List of Available Poll</h1>
+      <h1 className="text-center mb-10 text-blue-600 text-5xl">
+        List of Available Poll
+      </h1>
       <table className="w-full divide-y">
         <tbody>
           {data.map(poll => (
             <tr
-              className="text-center border-b text-xl text-gray-800"
+              className="text-center hover:bg-indigo-300 bg-indigo-200 border-b-8 text-xl text-gray-800"
               key={poll.id}
             >
               <td

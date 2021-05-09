@@ -3,7 +3,6 @@ import React from "react";
 const ListPolls = ({ data, showPoll, updatePoll, destroyPoll }) => {
   return (
     <>
-      {/* <div className="w-full p-2"> */}
       <h1 className="text-center mb-10 text-5xl">List of Available Poll</h1>
       <table className="w-full divide-y">
         <tbody>
@@ -18,15 +17,7 @@ const ListPolls = ({ data, showPoll, updatePoll, destroyPoll }) => {
               >
                 {poll.title}
               </td>
-              <td>
-                {" "}
-                {/* <span
-                    className="text-blue-500 p-2  text-lg cursor-pointer hover:text-blue-700"
-                    onClick={() => updatePoll(poll.id)}
-                  >
-                    Edit
-                  </span> */}
-              </td>
+              <td> </td>
               <td>
                 {" "}
                 <span
@@ -36,12 +27,10 @@ const ListPolls = ({ data, showPoll, updatePoll, destroyPoll }) => {
                   Delete
                 </span>
               </td>
-              {/* </td> */}
             </tr>
           ))}
         </tbody>
       </table>
-      {/* </div> */}
     </>
   );
 };

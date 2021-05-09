@@ -7,7 +7,7 @@ import pollsApi from "apis/polls";
 import votesApi from "apis/votes";
 import { logger } from "common/logger";
 import { getFromLocalStorage } from "helpers/storage";
-
+// import ProgressBar from 'react-bootstrap/ProgressBar'
 const ShowPoll = () => {
   const { id } = useParams();
   const userId = getFromLocalStorage("authUserId");
@@ -54,8 +54,9 @@ const ShowPoll = () => {
     }
 
     const filteredVotes = votes.filter(v => v.response_id == optionId);
-    const percentage = (filteredVotes.length / votes.length) * 100;
-    return percentage % 1 ? percentage.toFixed(2) : percentage;
+    const votePercentage = (filteredVotes.length / votes.length) * 100;
+    if (votePercentage % 1) return votePercentage.toFixed(2);
+    else return votePercentage;
   };
 
   useEffect(() => {
@@ -78,7 +79,7 @@ const ShowPoll = () => {
             <span
               className={`p-2 w-3/4 inline-block rounded cursor-pointer hover:bg-bb-purple hover:text-white ${
                 optionDetails[0]?.id === votedOption
-                  ? "bg-blue-800 text-white shadow-md"
+                  ? "bg-blue-800 text-white shadow-md animate-bounce"
                   : ""
               } 
 ${isVoted ? "pointer-events-none" : ""}`}
@@ -88,8 +89,20 @@ ${isVoted ? "pointer-events-none" : ""}`}
               {optionDetails[0]?.option}{" "}
             </span>
             {isVoted ? (
-              <span className="w-1/4 pl-4">
+              <span className="w-1/4 flex-end pl-4">
                 {getVotePercentage(optionDetails[0]?.id)}%
+                <div className="w-5/6 inline-block justify-center">
+                  <div className="relative pt-1">
+                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                      <div
+                        style={{
+                          width: `${getVotePercentage(optionDetails[0]?.id)}%`,
+                        }}
+                        className=" shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-700"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
               </span>
             ) : (
               ""
@@ -103,7 +116,7 @@ ${isVoted ? "pointer-events-none" : ""}`}
               className={`p-2 w-3/4 rounded inline-block cursor-pointer
 hover:bg-bb-purple hover:text-white ${
     optionDetails[1]?.id === votedOption
-      ? "bg-blue-800 text-white shadow-md"
+      ? "bg-blue-800 text-white shadow-md animate-bounce"
       : ""
     } ${isVoted ? "pointer-events-none" : ""}`}
               onClick={() => setVotedOption(optionDetails[1]?.id)}
@@ -114,6 +127,18 @@ hover:bg-bb-purple hover:text-white ${
             {isVoted ? (
               <span className="w-1/4 pl-4">
                 {getVotePercentage(optionDetails[1]?.id)}%
+                <div className="w-5/6 inline-block justify-center">
+                  <div className="relative pt-1">
+                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                      <div
+                        style={{
+                          width: `${getVotePercentage(optionDetails[1]?.id)}%`,
+                        }}
+                        className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
               </span>
             ) : (
               ""
@@ -127,7 +152,7 @@ hover:bg-bb-purple hover:text-white ${
               className={`p-2 w-3/4 inline-block cursor-pointer
 hover:bg-bb-purple rounded hover:text-white ${
     optionDetails[2]?.id === votedOption
-      ? "bg-blue-800 text-white shadow-md"
+      ? "bg-blue-800 text-white shadow-md animate-bounce"
       : ""
     } ${isVoted ? "pointer-events-none" : ""}`}
               onClick={() => setVotedOption(optionDetails[2]?.id)}
@@ -138,6 +163,18 @@ hover:bg-bb-purple rounded hover:text-white ${
             {isVoted ? (
               <span className="w-1/4 pl-4">
                 {getVotePercentage(optionDetails[2]?.id)}%
+                <div className="w-5/6 inline-block justify-center">
+                  <div className="relative pt-1">
+                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                      <div
+                        style={{
+                          width: `${getVotePercentage(optionDetails[2]?.id)}%`,
+                        }}
+                        className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
               </span>
             ) : (
               ""
@@ -151,7 +188,7 @@ hover:bg-bb-purple rounded hover:text-white ${
               className={`p-2 w-3/4 rounded inline-block cursor-pointer
 hover:bg-bb-purple hover:text-white ${
     optionDetails[3]?.id === votedOption
-      ? "bg-blue-800 text-white shadow-md"
+      ? "bg-blue-800 text-white shadow-md animate-bounce"
       : ""
     } ${isVoted ? "pointer-events-none" : ""}`}
               onClick={() => setVotedOption(optionDetails[3]?.id)}
@@ -162,6 +199,18 @@ hover:bg-bb-purple hover:text-white ${
             {isVoted ? (
               <span className="w-1/4 pl-4">
                 {getVotePercentage(optionDetails[3]?.id)}%
+                <div className="w-5/6 inline-block justify-center">
+                  <div className="relative pt-1">
+                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                      <div
+                        style={{
+                          width: `${getVotePercentage(optionDetails[3]?.id)}%`,
+                        }}
+                        className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
               </span>
             ) : (
               ""
@@ -171,7 +220,7 @@ hover:bg-bb-purple hover:text-white ${
 
         <div className=" w-3/4 inline-block justify-center px-6">
           {isVoted ? (
-            <p className="py-2 font-medium">Voted, Awesome! 🎉</p>
+            <p className="py-2 font-medium animate-pulse">Voted, Awesome! 🎉</p>
           ) : (
             <Button
               loading={loading}
